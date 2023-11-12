@@ -25,7 +25,6 @@ public class StudentDocument {
     private Student student;
     @ManyToOne(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY)
     @JoinColumn(name = "faculty_id")
-    @Column(name = "faculty_id")
     private Faculty faculty;
     @Column(name = "education_form")
     @Enumerated
