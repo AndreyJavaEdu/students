@@ -15,7 +15,7 @@ public class University {
     @Column(name = "university_id")
     private Long universityId;
     @Column(name = "university_name")
-    private Long universityName;
+    private String universityName;
 
     @OneToMany(cascade = {CascadeType.REFRESH}, fetch = FetchType.LAZY,
     mappedBy = "university")
