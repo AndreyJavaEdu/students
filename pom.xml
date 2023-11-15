@@ -54,6 +54,13 @@
             <artifactId>spring-web</artifactId>
             <version>${spring.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
@@ -125,25 +132,12 @@
             <version>1.2</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>org.apache.tomcat</groupId>-->
-<!--            <artifactId>tomcat-servlet-api</artifactId>-->
-<!--            <version>9.0.78</version>-->
-<!--            <scope>provided</scope>-->
-            <!--version>8.5.23</version-->
-<!--        </dependency>-->
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>
             <scope>provided</scope>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>javax.servlet</groupId>-->
-<!--            <artifactId>javax.servlet-api</artifactId>-->
-<!--            <version>4.0.1</version>-->
-<!--            <scope>provided</scope>-->
-<!--        </dependency>-->
     </dependencies>
 
     <build>
