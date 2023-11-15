@@ -1,6 +1,10 @@
-INSERT INTO sr_university (universityName) VALUES ('University one');
+INSERT INTO sr_university (universityName) VALUES ('University One');
+INSERT INTO sr_university (universityName) VALUES ('University Two');
 
-INSERT INTO sr_faculty (university_id, facultyName) VALUES (1, 'IT');
+INSERT INTO sr_faculty (university_id, facultyName) VALUES (1, 'IT one');
+INSERT INTO sr_faculty (university_id, facultyName) VALUES (1, 'IT two');
+INSERT INTO sr_faculty (university_id, facultyName) VALUES (2, 'ECONOMICS one');
+INSERT INTO sr_faculty (university_id, facultyName) VALUES (2, 'ECONOMICS two');
 
 INSERT INTO sr_student (last_name, first_name, middle_name, date_of_birth,
                         passport_seria, passport_number, passport_date)

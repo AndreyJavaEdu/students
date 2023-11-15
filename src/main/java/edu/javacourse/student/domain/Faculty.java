@@ -19,4 +19,7 @@ public class Faculty {
     @Column(name = "faculty_name")
     private String facultyName;
 
+    public University getUniversity() {
+        return university;
+    }
 }
