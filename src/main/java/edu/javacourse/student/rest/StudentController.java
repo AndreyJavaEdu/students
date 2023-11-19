@@ -4,25 +4,45 @@ import edu.javacourse.student.service.StudentService;
 import edu.javacourse.student.view.StudentRequest;
 import edu.javacourse.student.view.StudentResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.core.MediaType;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
-@Controller
-@Path("/student")
+@RestController
+@RequestMapping("/student")
 public class StudentController {
     @Autowired
     private StudentService studentService;
 
-    @POST
-    @Consumes(value = MediaType.APPLICATION_JSON)
-    @Produces(value = MediaType.APPLICATION_JSON)
-    public List<StudentResponse> getStudentInfo(StudentRequest request){
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public List<StudentResponse> getStudentInfo(@RequestBody StudentRequest request){
         return studentService.getStudentInfo(request);
+    }
+
+    @GetMapping(path = "/check")
+    public String checkAdmin(){
+        return "Rest Service is working";
+    }
+
+    @GetMapping(path = "/params/{paramId}")
+    public String checkParams(@PathVariable("paramId") Long checkId,
+                              @RequestParam String comment){
+        return checkId + ":" + comment;
+    }
+
+    @PostMapping(path = "/photo", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public String uploadPhoto(@RequestParam("comment") String comment,
+                              @RequestParam("photoFile") MultipartFile photoFile){
+        try(InputStream is = photoFile.getInputStream()){
+        return "Comment: " + comment + ", Name: " + photoFile.getName() +
+                 ", File name: "+ photoFile.getOriginalFilename() +", Size: " + is.available();
+        }catch (IOException ex){
+            throw new RuntimeException(ex);
+        }
     }
 }
